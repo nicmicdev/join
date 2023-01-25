@@ -5,6 +5,7 @@ let selectedCategory;
 let contactsAddTask;
 let contactsSorted;
 let categories = [];
+let assignToOpen = false;
 
 /**
  * This function is used to call important functions on onload of the body to get and render the needed data
