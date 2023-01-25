@@ -75,7 +75,7 @@ input {
     padding: 4px 8px;
     border-radius: 8px;
     border: 1px solid rgb(214, 214, 214);
-    margin-left: 8px;
+    /* margin-left: 8px; */
     height: 32px;
 }
 
@@ -89,7 +89,7 @@ textarea {
     padding: 4px;
     border-radius: 8px;
     border: 1px solid rgb(214, 214, 214);
-    margin-left: 8px;
+    /* margin-left: 8px; */
     resize: none;
     height: 92px;
 }
@@ -104,7 +104,7 @@ select {
     padding: 4px 8px;
     border-radius: 8px;
     border: 1px solid rgb(214, 214, 214);
-    margin-left: 8px;
+    /* margin-left: 8px; */
     height: 42px;
     background-color: white;
 }
@@ -118,7 +118,7 @@ select {
 }
 
 .low{
-    background-color: green !important;
+    background-color: #83E43B !important;
 }
 
 select:focus {
@@ -138,7 +138,7 @@ select:hover {
     display: flex;
     flex-direction: row;
     width: 100%;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .choosePriority img {
@@ -152,19 +152,20 @@ select:hover {
 }
 
 .choosePriority div {
-    width: 100px;
-    height: 40px;
+    width: 80px;
+    height: 30px;
     border-radius: 8px;
     background-color: white;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0px 2px;
 }
 
 
 .choosePriorityPicked {
-    transform: scale(1.1);
-    box-shadow: 1px 1px 1px 1px rgb(194, 194, 194);
+    transform: scale(1.05);
+    /* box-shadow: 1px 1px 1px 1px rgb(194, 194, 194); */
     pointer-events: none;
     color: white;
 }
@@ -178,7 +179,7 @@ select:hover {
     cursor: pointer;
     transition: 175ms ease-in-out;
     transform: scale(1.1);
-    box-shadow: 1px 1px 1px 1px rgb(194, 194, 194);
+    /* box-shadow: 1px 1px 1px 1px rgb(194, 194, 194); */
 }
 
 .div-button {
@@ -331,7 +332,7 @@ option{
     border: 1px solid #ccc;
     margin: 0;
     width: -webkit-fill-available;
-    margin-left: 8px;
+    /* margin-left: 8px; */
     font-size: 16px;
     background-color: white;
     border-radius: 8px;
@@ -437,9 +438,9 @@ option{
 }
 
 @media(max-width: 1100px){
-    .choosePriority div {
+    /* .choosePriority div {
         width: 96px;
-    }
+    } */
 }
 
 @media(max-width: 1024px) {
@@ -475,10 +476,10 @@ option{
         margin-bottom: 6px;
     }
 
-    .choosePriority div {
+    /* .choosePriority div {
         min-width: 96px;
         width: 20%;
-    }
+    } */
 
 
 

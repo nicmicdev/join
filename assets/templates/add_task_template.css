@@ -95,7 +95,7 @@ input {
     padding: 4px 8px;
     border-radius: 8px;
     border: 1px solid rgb(214, 214, 214);
-    margin-left: 8px;
+    /* margin-left: 8px; */
     height: 32px;
 }
 
@@ -109,7 +109,7 @@ textarea {
     padding: 8px;
     border-radius: 8px;
     border: 1px solid rgb(214, 214, 214);
-    margin-left: 8px;
+    /* margin-left: 8px; */
     resize: none;
     height: 92px;
 }
@@ -127,7 +127,7 @@ textarea:focus {
 }
 
 .low{
-    background-color: green !important;
+    background-color: #83E43B !important;
 }
 
 select {
@@ -136,7 +136,7 @@ select {
     padding: 4px 8px;
     border-radius: 8px;
     border: 1px solid rgb(214, 214, 214);
-    margin-left: 8px;
+    /* margin-left: 8px; */
     height: 42px;
     background-color: white;
 }
@@ -174,7 +174,7 @@ option {
     display: flex;
     flex-direction: row;
     width: 100%;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .choosePriority img {
@@ -188,25 +188,26 @@ option {
 }
 
 .choosePriority div {
-    width: 100px;
-    height: 40px;
+    width: 80px;
+    height: 30px;
     border-radius: 8px;
     background-color: white;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0 2px;
 }
 
 .choosePriority div:hover {
     cursor: pointer;
     transition: 175ms ease-in-out;
     transform: scale(1.1);
-    box-shadow: 1px 1px 1px 1px rgb(194, 194, 194);
+    /* box-shadow: 1px 1px 1px 1px rgb(194, 194, 194); */
 }
 
 .choosePriorityPicked {
     transform: scale(1.1);
-    box-shadow: 1px 1px 1px 1px rgb(194, 194, 194);
+    /* box-shadow: 1px 1px 1px 1px rgb(194, 194, 194); */
     pointer-events: none;
     color: white;
 }
@@ -373,7 +374,7 @@ option {
     border: 1px solid #ccc;
     margin: 0;
     width: -webkit-fill-available;
-    margin-left: 8px;
+    /* margin-left: 8px; */
     font-size: 16px;
     background-color: white;
     border-radius: 8px;
@@ -503,7 +504,7 @@ option {
 
     .content-addtask {
         width: 100%;
-        height: 100%;
+        height: 101%;
         padding-top: 32px;
         border-radius: 0;
         background-color: #F6F7F8;
@@ -552,7 +553,7 @@ option {
     }
 
     .choosePriority {
-        justify-content: space-between;
+        justify-content: space-around;
     }
 
     .choosePriority div {
@@ -564,7 +565,7 @@ option {
         margin: 0;
         width: 200px;
         height: 77px;
-        background-color: #F6F7F8;
+        /* background-color: #F6F7F8; */
         z-index: 10;
         position: fixed;
         top: 2px;
