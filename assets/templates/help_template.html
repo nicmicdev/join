@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="assets/templates/help_template_style.css">
+    <link rel="shortcut icon" href="assets/img/Join_background.png" type="image/x-icon">
+</head>
+
+<body>
+    <div class="help-content d-none" id="help-content">
+        <h1>Help</h1>
+        <img src="assets/img/backButton.svg" onclick="hideHelp()">
+        <div>
+            <h2 class="h2-help">What is Join?</h2>
+            <p class="p-help">JOIN is a tool to manage your tasks in a quick and simple way inspired by the "Kanban" concept. Sign up
+                for free or register as guest.</p>
+
+            <h2 class="h2-help">What is Kanban?</h2>
+            <p class="p-help">The Concept of Kanban was originated in 1940s by Toyota. In Japanese "Kanban" means "Visual Signal" or
+                Visual Card. The Main Purpose of Kanban is to help and improve manufacturing efficiency and create a
+                transparent work process for everybody.
+
+            </p>
+        </div>
+        <div class="help-table">
+            <h2 class="h2-help">How to use JOIN</h2>
+
+            <h2 class="h2-help" style="color: #28ABE2 ;"><i>Task Management</i></h2>
+
+            <h3 class="h3-help">Add a task</h3>
+
+            <div>
+                <span>1.</span>
+                <p class="p-help">Simply click on any <i>"Add task"</i> button you see and fill out all the required fields.</p>
+            </div>
+            <div>
+                <span>2.</span>
+                <p class="p-help">Fill out all the required fields.</p>
+            </div>
+            <div>
+                <span>3.</span>
+                <p class="p-help">Your task will be <i>added to the board</i> where you can move your task around depending of its status. </p>
+            </div>
+            
+
+            <h3 class="h3-help">Move a task</h3>
+
+            <div>
+                <span>1.</span>
+                <p class="p-help"><b>Desktop version</b>: To move a task you can simply <i><u>drag and drop</u></i> it to the desired position.<br>
+                    
+                </p>
+            </div>
+            <div>
+                <span>2.</span>
+                <p class="p-help"><b>Mobile version</b>: Click at the task card to open the detail view. 
+                </p>
+            </div>
+            <div>
+                <span>2.1</span>
+                <p class="p-help">Here you can move your task in the <i>"Move task to"</i> section <b>by clicking</b>.</p>
+            </div>
+
+            <h3 class="h3-help">Edit a task</h3>
+
+            <div>
+                <span>1.</span>
+                <p class="p-help">Click on any <i>task card</i> to open up the detail view.</p>
+            </div>
+            <div>
+                <span>2.</span>
+                <p class="p-help">Click on the <u><i>pencil symbol in the lower right corner</i></u> to edit your task.</p>
+            </div>
+            
+            <h3 class="h3-help">Delete a task</h3>
+
+            <div>
+                <span>1.</span>
+                <p class="p-help">Click on any <i>task card</i> to open up the detail view.</p>
+            </div>
+            <div>
+                <span>2.</span>
+                <p class="p-help">Click on the <u><i>trash symbol in the lower right corner</i></u> to delete your task.</p>
+            </div>
+            
+            
+            <h2 class="h2-help" style="color: #28ABE2 ;"><i>Contact book</i></h2>
+
+            <h3 class="h3-help">Add a contact</h3>
+
+            <div>
+                <span>1.</span>
+                <p class="p-help">Click on the <i>"New contact"</i> button.</p>
+            </div>
+            <div>
+                <span>2.</span>
+                <p class="p-help">Fill out all the required fields.</p>
+            </div>
+            <div>
+                <span>3.</span>
+                <p class="p-help">Your contact will be <i>added to the list</i> where you can also edit it afterwards. </p>
+            </div>
+
+            <h3 class="h3-help">Edit a contact</h3>
+
+            <div>
+                <span>1.</span>
+                <p class="p-help"><i>Select a contact</i> to open up the detail view.</p>
+            </div>
+            <div>
+                <span>2.</span>
+                <p class="p-help">Click on the <u><i>pencil symbol</i></u> to edit the selected contact.</p>
+            </div>
+            
+
+            <h3 class="h3-help">Change color of a contact</h3>
+
+            <div>
+                <span>1.</span>
+                <p class="p-help"><i>Select a contact</i> to open up the detail view.</p>
+            </div>
+            <div>
+                <span>2.</span>
+                <p class="p-help">Click on the <u><i>circle</i></u> with the contacts initials to change the color.</p>
+            </div>
+            
+
+        </div>
+
+       
+
+
+    </div>
+
+
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

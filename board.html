@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="board.css">
+    <link rel="stylesheet" href="board-mobile.css">
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="shortcut icon" href="assets/img/Join_background.png" type="image/x-icon">
+
+    <title>Join - Board</title>
+
+    <script src="mini_backend.js"></script>
+    <script src="script.js"></script>
+    <script src="board_mobile_and_drag.js"></script>
+    <script src="board.js"></script>
+    <script src="add_task.js"></script>
+    <script src="add_task_template.js"></script>
+    <script src="new_contact.js"></script>
+    
+</head>
+
+<body id="body" onload="initBoard()" id="body">
+    <div w3-include-html="assets/templates/add_task_template.html" class="d-none" id="add-task-overlay-board"></div>
+    <div w3-include-html="assets/templates/help_template.html"></div>
+
+    <div class="dialog-taskadded d-none" id="dialog-taskadded">
+        <span>Task added to board</span>
+        <img src="assets/img/icon-summary.svg">
+    </div>
+
+    <div class="alert-delete-task-container d-none" id="alert-delete-task-container" onclick="closeAlertDelete()">
+        <div class="alert-delete-task" onclick="doNotClose(event)">
+            <img class="close-overlay-btn-delete" src="assets/img/close.svg" onclick="closeAlertDelete()">
+            <h2>Are you sure to delete this task?</h2>
+            <div class="alert-delete-task-btn">
+                <button onclick="closeAlertDelete()">Dismiss</button>
+                <button id="alert-delete-delete-btn" class="alert-delete-delete-btn">Delete</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="overlay" class="overlay d-none" onclick="closeCard()">
+
+        <div id="card-container" class="card-container d-none" onclick="doNotClose(event)">
+
+            <img class="close-overlay-btn" src="assets/img/close.svg" onclick="closeCard()">
+            <img class="back-overlay-btn" src="assets/img/backButton.svg" onclick="closeCard()">
+
+            <div id="task-overly-details" class="task-overly-details"></div>
+        </div>
+
+    </div>
+
+
+
+
+    <div w3-include-html="assets/templates/mobile_template.html"></div>
+
+    <div class="content-destop">
+        <div w3-include-html="assets/templates/destop_template.html"></div>
+        <div class="inner-content" id="inner-content">
+            <div class="heading-search-add">
+                <h1 class="main-heading">Board</h1>
+                <div class="input-and-button-container">
+                    <div class="board-input-container">
+                        <input class="board-inputfield" type="text" placeholder="Find Task" id="searchTaskDestop" onkeyup="searchTask()">
+                        <div style="display: flex ;">
+                            <span class="vertical-line">|</span>
+                            <img class="search-icon" src="assets/img/search-icon.svg" alt="">
+                        </div>
+                    </div>
+                    <button onclick="showAddTask('todo')" class="add-task-btn">Add task <img style="margin-left: 5px; height: 15px; width: 15px;"
+                            src="assets/img/plus-icon.svg"> </button>
+                </div>
+            </div>
+
+            <div class="tasks-container">
+
+                <div class="task" id="todoTasksBoard" ondrop="moveToTodo('todoTasksBoard')" ondragleave="removeHighlight('todoTasksBoard')" ondragover="allowDrop(event); highlight('todoTasksBoard')">
+
+                    <div class="tasks-heading">
+                        <h3>To do</h3>
+                        <span class="plus-icon" onclick="showAddTask('todo')"></span>
+                    </div>
+
+                    <div class="tasks-main" id="tasks-todo">
+                    </div>
+
+                </div>
+
+                <div class="task" id="progressTasksBoard" ondrop="moveToProgress('progressTasksBoard')" ondragleave="removeHighlight('progressTasksBoard')" ondragover="allowDrop(event); highlight('progressTasksBoard')">
+
+                    <div class="tasks-heading">
+                        <h3>In progress</h3>
+                        <span class="plus-icon" onclick="showAddTask('progress')"></span>
+                    </div>
+
+                    <div class="tasks-main" id="tasks-inprogress">
+                    </div>
+
+                </div>
+
+                <div class="task" id="feedbackTasksBoard" ondrop="moveToFeedback('feedbackTasksBoard')" ondragleave="removeHighlight('feedbackTasksBoard')" ondragover="allowDrop(event); highlight('feedbackTasksBoard')">
+
+                    <div class="tasks-heading">
+                        <h3>Feedback</h3>
+                        <span class="plus-icon" onclick="showAddTask('feedback')"></span>
+                    </div>
+
+                    <div class="tasks-main" id="tasks-feedback">
+
+                    </div>
+
+                </div>
+
+                <div class="task" id="doneTasksBoard" ondrop="moveToDone('doneTasksBoard')" ondragleave="removeHighlight('doneTasksBoard')" ondragover="allowDrop(event); highlight('doneTasksBoard')">
+
+                    <div class="tasks-heading">
+                        <h3>Done</h3>
+                        <span class="plus-icon" onclick="showAddTask('done')"></span>
+                    </div>
+
+                    <div class="tasks-main" id="tasks-done">
+
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="content-mobile">
+        <span class="small-heading-mobile">Kanban Project Management Tool</span>
+
+        <div class="heading-search-add">
+            <h1 class="main-heading">Board</h1>
+            <div class="input-and-button-container">
+                <div class="board-input-container">
+                    <input class="board-inputfield" type="text" placeholder="Find Task" id="searchTaskMobile" onkeyup="searchTask()">
+                    <div style="display: flex ;">
+                        <span class="vertical-line">|</span>
+                        <img class="search-icon" src="assets/img/search-icon.svg" alt="">
+                    </div>
+                </div>
+                <button onclick="showAddTask('todo')" class="add-task-btn">Add task<img style="margin-left: 5px; height: 15px; width: 15px;"
+                        src="assets/img/plus-icon.svg"> </button>
+                <button onclick="showAddTask('todo')" class="add-task-btn-mobile"><img src="assets/img/plus-icon.svg"> </button>
+            </div>
+        </div>
+
+        <div class="tasks-container">
+
+            <div class="task-mobile">
+
+                <div class="tasks-heading">
+                    <h3>To do</h3>
+                    <span class="plus-icon" onclick="showAddTask('todo')"></span>
+                </div>
+
+                <div class="tasks-main" id="tasks-todo-mobile">
+                    </div>
+
+            </div>
+
+            <div class="task-mobile">
+
+                <div class="tasks-heading">
+                    <h3>In progress</h3>
+                    <span class="plus-icon" onclick="showAddTask('progress')"></span>
+                </div>
+
+                <div class="tasks-main" id="tasks-inprogress-mobile">
+                </div>
+
+            </div>
+
+            <div class="task-mobile">
+
+                <div class="tasks-heading">
+                    <h3>Feedback</h3>
+                    <span class="plus-icon" onclick="showAddTask('feedback')"></span>
+                </div>
+
+                <div class="tasks-main" id="tasks-feedback-mobile">
+                    </div>
+
+            </div>
+
+            <div class="task-mobile">
+
+                <div class="tasks-heading">
+                    <h3>Done</h3>
+                    <span class="plus-icon" onclick="showAddTask('done')"></span>
+                </div>
+
+                <div class="tasks-main" id="tasks-done-mobile">
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+
+</body>
+
+</html>

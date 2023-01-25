@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join - Summary</title>
+    <link rel="shortcut icon" href="assets/img/Join_background.png" type="image/x-icon">
+
+
+    <link rel="stylesheet" href="summary_style.css">
+    <link rel="stylesheet" href="fonts.css">
+
+    <script src="mini_backend.js"></script>
+    <script src="script.js"></script>
+    <script src="summary.js"></script>
+    
+</head>
+
+<body onload="renderSummary()" id="body">
+
+    <div w3-include-html="assets/templates/mobile_template.html"></div>
+    <div w3-include-html="assets/templates/help_template.html"></div>
+
+
+    <div class="content-destop">
+        <div w3-include-html="assets/templates/destop_template.html"></div>
+        <div class="inner-content" id="inner-content">
+            <div class="headline">
+                <h1 style="margin-right: 16px;">Summary</h1>
+                <img src="assets/img/devideLineSummary.svg">
+                <span>Everything in a nutshell!</span>
+            </div>
+            <div class="summary">
+                <div class="summary-information">
+                    <div class="first-row">
+                        <a href="board.html">
+                            <h2 id="summaryTasksBoard"></h2>
+                            <span>Tasks in Board</span>
+                        </a>
+                        <a href="board.html">
+                            <h2 id="summaryTasksProgress"></h2>
+                            <span>Tasks in Progress</span>
+                        </a>
+                        <a href="board.html">
+                            <h2 id="summaryTasksFeedback"></h2>
+                            <span>Awaiting Feedback</span>
+                        </a>
+                    </div>
+                    <a href="board.html" class="second-row">
+                        <div class="urgent-tasks">
+                            <img src="assets/img/urgentSymbol.svg">
+                            <div>
+                                <h2 id="summaryTasksUrgent"></h2>
+                                <span>Urgent</span>
+                            </div>
+                        </div>
+                        <div class="upcoming-deadline">
+                            <span style="font-size: 18px;" id="currentDate"></span>
+                            <span style="font-size: 14px; margin-top: 6px;">Upcoming Deadline</span>
+                        </div>
+                    </a>
+                    <div class="third-row">
+                        <a href="board.html">
+                            <div class="elipse">
+                                <img src="assets/img/pencilToDo.svg">
+                            </div>
+                            <div class="content-div-row-3">
+                                <h2 id="summaryTasksTodo"></h2>
+                                <span>To-do</span>
+                            </div>
+                        </a>
+                        <a href="board.html">
+                            <div class="elipse">
+                                <img src="assets/img/doneSymbol.svg" class="done-symbol">
+                            </div>
+                            <div class="content-div-row-3">
+                                <h2 id="summaryTasksDone"></h2>
+                                <span>Done</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="greeting">
+                    <span style="margin: 0;" id="greeting-sentence"></span>
+                    <span class="greeting_name" id="greeting-name"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-mobile">
+        <div class="headline-mobile">
+            <span style="font-size: 14px;">Kanban Project Management Tool</span>
+            <h1>Summary</h1>
+            <span style="color: #2A3647;">Everything in a nutshell!</span>
+            <img src="assets/img/devideLineSummary.svg">
+        </div>
+        <div class="summary-information-mobile">
+            <div class="first-row">
+                <a href="board.html">
+                    <h2 id="summaryTasksBoard-mobile"></h2>
+                    <span>Tasks in Board</span>
+                </a>
+                <a href="board.html">
+                    <h2 id="summaryTasksProgress-mobile"></h2>
+                    <span>Tasks in Progress</span>
+                </a>
+                <a href="board.html">
+                    <h2 id="summaryTasksFeedback-mobile"></h2>
+                    <span>Awaiting Feedback</span>
+                </a>
+            </div>
+            <a class="second-row" href="board.html">
+                <div class="urgent-tasks">
+                    <img src="assets/img/urgentSymbol.svg">
+                    <div>
+                        <h2 id="summaryTasksUrgent-mobile"></h2>
+                        <span>Urgent</span>
+                    </div>
+                </div>
+                <div class="upcoming-deadline">
+                    <span style="font-size: 16px;" id="currentDate-mobile"></span>
+                    <span style="font-size: 13px; margin-top: 6px;">Upcoming Deadline</span>
+                </div>
+            </a>
+            <div class="third-row">
+                <a href="board.html">
+                    <div class="elipse">
+                        <img src="assets/img/pencilToDo.svg">
+                    </div>
+                    <div class="content-div-row-3-mobile">
+                        <h2 id="summaryTasksTodo-mobile"></h2>
+                        <span>To-do</span>
+                    </div>
+                </a>
+                <a href="board.html">
+                    <div class="elipse">
+                        <img src="assets/img/doneSymbol.svg" class="done-symbol">
+                    </div>
+                    <div class="content-div-row-3-mobile">
+                        <h2 id="summaryTasksDone-mobile"></h2>
+                        <span>Done</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

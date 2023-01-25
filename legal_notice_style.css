@@ -1,0 +1,147 @@
+body {
+    font-family: Inter;
+    color: #2A3647;
+    background-color: #F6F7F8;
+    margin: 0;
+    display: flex;
+
+}
+
+.content-mobile {
+    display: none;
+}
+
+.inner-content {
+    background-color: #F6F7F8;
+    position: absolute;
+    left: 232px;
+    top: 89px;
+    height: calc(100vh - 89px);
+    width: calc(100% - 232px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+}
+
+.content-container {
+    width: 80%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    margin-top: 32px;
+    position: relative;
+}
+
+.main-heading {
+    font-size: 61px;
+    font-weight: 700;
+    /* margin-bottom: 0 !important; */
+
+}
+
+.sub-heading {
+    font-size: 27px;
+    font-weight: 700;
+}
+
+.back-overlay-btn {
+    height: 35px;
+    width: 35px;
+    position: fixed;
+    right: 22px;
+    top: 115px;
+    cursor: pointer;
+}
+
+.content-mobile {
+    display: flex;
+    justify-content: center;
+    margin-top: 89px;
+}
+
+.small-heading-mobile {
+    font-size: 18px;
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+.inner-content {
+    scrollbar-width: auto;
+    scrollbar-color: #2a3647 #F6F7F8;
+}
+
+/* Chrome, Edge, and Safari */
+.inner-content::-webkit-scrollbar {
+    width: 10px;
+}
+
+.inner-content::-webkit-scrollbar-track {
+    background: #F6F7F8;
+}
+
+.inner-content::-webkit-scrollbar-thumb {
+    background-color: #2a3647;
+    border-radius: 10px;
+    border: 1px solid #ffffff;
+}
+
+
+
+@media(max-width: 1024px) {
+
+    .content-destop {
+        display: none;
+    }
+
+    .content-mobile {
+        display: flex;
+    }
+
+    .content-container {
+        padding-bottom: 80px;
+    }
+}
+
+@media(min-width: 1024px) {
+    .content-mobile {
+        display: none;
+    }
+}
+
+@media(max-width: 650px) {
+    .main-heading {
+        font-size: 44px;
+    }
+
+    .content-container {
+        width: 95%;
+        word-break: break-word;
+    }
+
+}
+
+@media(max-width: 450px) {
+
+
+    .main-heading {
+        font-size: 37px;
+    }
+}
+
+@media(max-width: 450px) {
+
+    .back-overlay-btn {
+        position: fixed;
+        right: 0px;
+        top: 88px;
+
+    }
+
+
+    .sub-heading {
+        font-size: 23px;
+        text-overflow: ellipsis;
+
+    }
+}

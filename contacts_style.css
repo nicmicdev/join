@@ -1,0 +1,912 @@
+body {
+    margin: 0;
+    font-family: 'Inter';
+}
+
+.hover:hover {
+    cursor: pointer;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 80px;
+    right: 0;
+    left: 0;
+    z-index: 4;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.content-destop{
+    width: 100%;
+    min-width: 1024px;
+    height: 100vh;
+    display: flex;
+    font-family: 'Inter';
+    box-sizing: border-box;
+    position: relative;
+}
+
+.inner-content{
+    background-color: #F6F7F8;
+    position: relative;
+    left: 232px;
+    top: 89px;
+    height: calc(100vh - 89px);
+    width: calc(100% - 232px);
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.complete-page {
+    display: flex;
+    flex-direction: row;
+    height: calc(100vh - 89px);
+}
+
+/* Left side of Page  */
+
+.all-contacts {
+    width: 35%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.all-contacts-div {
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.all-contacts-div {
+    scrollbar-width: auto;
+    scrollbar-color: #2a3647 #ffffff;
+  }
+
+  /* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  .all-contacts-div {
+    scrollbar-width: auto;
+    scrollbar-color: #2a3647 #ffffff;
+  }
+
+  /* Chrome, Edge, and Safari */
+  .all-contacts-div::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  .all-contacts-div::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
+  .all-contacts-div::-webkit-scrollbar-thumb {
+    background-color: #2a3647;
+    border-radius: 10px;
+    border: 1px solid #ffffff;
+  }
+
+.alphabet-box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.first-letter-box {
+    width: 80%;
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.line {
+    width: 80%;
+    height: 2px;
+    background-color: rgb(226, 226, 226);
+}
+
+.single-contact {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-height: 60px;
+    width: 90%;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+}
+
+.single-contact:hover {
+    background-color: rgb(42, 54, 71);
+    color: white;
+    cursor: pointer;
+}
+
+.initials {
+    height: 40px;
+    width: 40px;
+    background-color: orange;
+    color: white;
+    font-size: 12px;
+    border: 2px solid white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.name-email {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.name-small {
+    font-size: 21px;
+    font-weight: 500;
+}
+
+.email-small {
+    font-size: 12px;
+    font-weight: 600;
+    color: rgb(41, 171, 226);
+}
+
+
+/* Right side of Page  */
+
+.complete-contact {
+    width: 65%;
+    background-color: rgb(246, 247, 248);
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.this-contact {
+    width: 90%;
+    margin-top: 60px;
+    overflow-y: auto;
+}
+
+.head {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.arrow-back {
+    position: absolute;
+    right: 30px;
+}
+
+.arrow-back:hover {
+    cursor: pointer;
+}
+
+.headline-contacts h1 {
+    font-size: 50px;
+    font-weight: 700;
+    margin-bottom: 0;
+    color: #2A3647;
+}
+
+.horizontal-line {
+    width: 4px;
+    height: 50px;
+    background-color: rgb(41, 171, 226);
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.vertical-line {
+    width: 105px;
+    height: 2px;
+    background-color: rgb(41, 171, 226);
+    margin-top: 25px;
+}
+
+.motivation {
+    font-size: 25px;
+    font-weight: 500;
+    color: rgb(42, 54, 71);
+}
+
+.name {
+    display: flex;
+    flex-direction: row;
+    margin-top: 60px;
+}
+
+.initials-big {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90px;
+    width: 90px;
+    background-color: orange;
+    border: 2px solid white;
+    color: white;
+    font-size: 30px;
+    border-radius: 50%;
+    margin-right: 40px;
+}
+
+.name-addTask {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.name-big h2 {
+font-size: 40px;
+font-weight: 600;
+}
+
+.addTask-button {
+    color: rgb(41, 171, 226);
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.addTask-button:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.contact-information {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.heading-information {
+    font-size: 18px;
+    font-weight: 500;
+    margin-right: 70px;
+}
+
+.edit-contact {
+    display: flex;
+    align-items: flex-end;
+    font-size: 12px;
+}
+
+.edit-contact:hover {
+    cursor: pointer;
+    color: rgb(41, 171, 226);
+}
+
+.edit-contact img {
+    height: 25px;
+    margin-right: 10px;
+}
+
+.email-div {
+margin-top: 30px;
+}
+
+.contact-variant {
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.email-adress a{
+    font-size: 14px;
+    color: rgb(41, 171, 226);
+    font-weight: 600;
+    margin-top: 7px;
+    text-decoration: none;
+}
+
+.email-adress:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.phone-div {
+    margin-top: 20px;
+}
+
+.phone-number {
+    font-size: 14px;
+    color: black;
+    font-weight: 600;
+    margin-top: 7px;
+}
+
+.phone-number:hover {
+    cursor: pointer;
+    color: rgb(41, 171, 226);
+}
+
+.new-contact-button {
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+}
+
+.new-contact-button button {
+    height: 45px;
+    background-color: rgb(42, 54, 71);
+    color: white;
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: 600;
+    border: none;
+}
+
+.new-contact-button img {
+    height: 25px;
+    margin-left: 8px;
+}
+
+.new-contact-button button:hover {
+    background-color: rgb(41, 171, 226);
+}
+
+.mobile-edit-button {
+    background-color: rgb(42, 54, 71);
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    position: fixed;
+    bottom: 140px;
+    right: 40px;
+}
+
+.mobile-edit-button:hover {
+    cursor: pointer;
+    background-color: rgb(41, 171, 226);
+}
+
+.mobile-edit-button img {
+    height: 30px;
+}
+
+
+/*@media (max-width: 1024px) {
+    .content-destop{
+        display: none;
+    }
+}*/
+
+
+
+/* Add & Edit Contact Style*/
+.addedit-contact-display {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.addedit-contact {
+    height: 420px;
+    width: 900px;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    z-index: 5;
+
+    animation: flyIn;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes flyIn {
+    0% {right:-1500px}
+    100% { right: 0px;}
+}
+
+.new-addedit-contact {
+    height: 420px;
+    width: 900px;
+    right: -1500px;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    z-index: 5;
+
+    animation: flyOut;
+    animation-duration: 1s;
+}
+
+@keyframes flyOut {
+    0% {right:0}
+    100% { right: -2500px;}
+}
+
+
+.addedit-contact-design {
+    width: 40%;
+    background-color: rgb(42, 54, 71);
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    padding-left: 30px;
+    padding-right: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.addedit-contact-logo {
+    margin-bottom: 10px;
+}
+
+.addedit-contact-logo img {
+    height: 55px;
+}
+
+.addedit-contact-headline {
+    color: white;
+}
+
+.addedit-contact-headline h2 {
+    font-size: 50px;
+    font-weight: 600;
+}
+
+.addedit-contact-motivation {
+    color: white;
+    font-size: 21px;
+
+}
+
+.addedit-contact-line {
+    height: 2px;
+    background-color: rgb(41, 171, 226);
+    width: 25%;
+    margin-top: 1%;
+    margin-bottom: 20%;
+}
+
+.addedit-contact-fields {
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(255, 255, 255);
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.close-x img {
+   position: absolute;
+   top: 20px;
+   right: 40px;
+   height: 26px;
+}
+
+.addedit-contact-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    padding-bottom: 50px;
+}
+
+.addedit-contact-image img {
+    height: 100px;
+}
+
+.addedit-contact-input-fields {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 70%;
+    padding-top: 20px;
+}
+
+.name-field {
+    width: 90%;
+}
+
+.email-field {
+    width: 90%;
+    margin-top: 35px;
+}
+
+.phone-field {
+    width: 90%;
+    margin-top: 35px;
+}
+.add-contact-buttons{
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+}
+
+.button-cancel button {
+    height: 48px;
+    width: 95px;
+    color: rgb(42, 54, 71);
+    background-color: white;
+    border: 1px solid rgb(42, 54, 71);
+    border-radius: 8px;
+    margin-right: 20px;
+}
+
+.button-cancel button:hover {
+    color: rgb(41, 171, 226);
+    border: 1px solid rgb(41, 171, 226);
+}
+
+.button-create button {
+    background-color: rgb(42, 54, 71);
+    color: white;
+    border-radius: 8px;
+    height: 48px;
+    font-weight: 500;
+    border: none;
+}
+
+.button-create button:hover {
+    background-color: rgb(41, 171, 226);
+} 
+
+.button-create button img {
+    height: 23px;
+}
+
+.edit-contact-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.edit-contact-buttons button {
+    height: 45px;
+    width: 100px;
+    margin-top: 40px;
+    margin-right: 15px;
+    background-color: rgb(42, 54, 71);
+    color: white;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    border: none;
+}
+
+.edit-contact-buttons button:hover {
+    background-color: rgb(41, 171, 226);
+}
+
+
+/*Stop*/
+
+@media (min-width: 1024px) {
+    .button-new-contact {
+        display: none;
+    }
+
+    .white-x {
+        display: none;
+    }
+
+    .vertical-line {
+        display: none;
+    }
+
+    .mobile-edit-button {
+        display: none;
+    }
+
+    .arrow-back {
+        display: none;
+    }
+}
+
+@media (max-width: 1024px) {
+    .overlay {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .overlay-complete-contact {
+        background-color: rgb(246, 247, 248);
+        display: flex;
+        justify-content: center;
+        position: relative;
+    }
+
+    .content-destop {
+        min-width: 0px;
+    }
+
+    .inner-content {
+        left: 0;
+        width: 100%;
+        top: 0;
+        margin-top: 85px;
+        margin-bottom: 90px;
+        padding-bottom: 85px;
+    }
+
+    .complete-page {
+        flex-direction: column;
+    }
+
+    .button-new-contact {
+        display: flex;
+        justify-content: flex-end;
+        margin: 10px;
+        width: 90%;
+        
+    }
+
+    .button-new-contact button:hover {
+        background-color: rgb(41, 171, 226);
+    }
+
+    .button-new-contact img {
+        height: 25px;
+    }
+
+    .button-new-contact button {
+        background-color: rgb(42, 54, 71);
+        color: white;
+        border-radius: 8px;
+        height: 48px;
+        font-size: 20px;
+        font-weight: 500;
+        border: none;
+        padding-left: 10px;
+    }
+
+    .all-contacts {
+        width: 100%;
+        margin-bottom: 80px;
+    }
+
+    .all-contacts-div {
+        height: 80%;
+    }
+
+    .alphabet-box {
+        width: 90%;
+    }
+
+    .single-contact {
+        height: 80px;
+    }
+
+   .name-small {
+    font-size: 24px;
+    font-weight: 500;
+   }
+
+   .email-small {
+    font-size: 15px;
+    font-weight: 500;
+   }
+
+    .addedit-contact {
+        margin-top: 0;
+    }
+
+    
+    
+    /* Show complete contact*/
+
+    .complete-contact {
+        width: 100%;
+    }
+
+    .this-contact {
+        margin-top: 20px;
+        height: calc(100vh - 190px);
+        padding-bottom: 70px;
+    }
+
+    .head {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .headline-contacts h1{
+        margin-bottom: 32px;
+        color: #2A3647;
+    }
+
+    .horizontal-line {
+        display: none;
+    }
+
+    .initials-big {
+        margin-right: 15px;
+    }
+
+    .heading-information {
+        font-size: 22px;
+        margin-right: 0;
+    }
+
+    .edit-contact {
+        display: none;
+    }
+
+    .new-contact-button {
+        display: none;
+    }
+
+} 
+    @media (min-width: 900px){
+            .white-x {
+                display: none;
+            }
+    }
+    @media (max-width: 900px) {
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.5)
+        }
+
+        .addedit-contact-display {
+            display:block;
+        }
+
+        .addedit-contact {
+            flex-direction: column;
+            width: 100%;
+            height: 80%;
+            margin-top: 10vh;
+
+            animation: flyInMobile;
+            animation-duration: 0.5s;
+        }
+
+        .new-addedit-contact {
+            flex-direction: column;
+            width: 100%;
+            height: 80%;
+            bottom: -1500px;
+            margin-top: 10vh;
+            right: 0;
+
+            animation: flyOutMobile;
+            animation-duration: 0.8s;
+        }
+
+        @keyframes flyInMobile {
+            0% {bottom:-1500px}
+            100% { bottom: 0px;}
+        }
+
+        @keyframes flyOutMobile {
+            0% {bottom: 0px}
+            100% { bottom: -1500px;}
+        }
+
+        .addedit-contact-design {
+            width: 100%;
+            height: 43vh;
+            border-bottom-left-radius: 0;
+            border-top-right-radius: 25px;
+        }
+    
+        .white-x {
+            position: absolute;
+            top: 30px;
+            right: 25px;
+        }
+    
+        .addedit-contact-fields {
+            width: 100%;
+            height: 53vh;
+            flex-direction: column;
+            align-items: center;
+            border-top-right-radius: 0;
+            border: 2px solid lightgrey;
+            border-bottom-right-radius: 25px;
+            border-bottom-left-radius: 25px;
+        }
+    
+        .addedit-contact-logo {
+            display: none;
+        }
+    
+        .addedit-contact-design {
+            align-items: center;
+            padding-top: 50px;
+        }
+    
+        .addedit-contact-image img{
+            height: 130px;
+            position: absolute;
+        }
+
+        .addedit-contact-image {
+            margin-top: -15px;
+        }
+    
+        .addedit-contact-headline h2 {
+            font-size: 50px;
+        }
+    
+        .addedit-contact-line {
+            width: 35%;
+        }
+    
+        .name-field {
+            width: 100%;
+        }
+    
+        .email-field {
+            width: 100%;
+        }
+    
+        .phone-field {
+            width: 100%;
+        }
+
+        .add-contact-buttons {
+            justify-content: center;
+        }
+    
+        .addedit-contact-input-fields {
+            align-items: center;
+        }
+    
+        .button-cancel {
+            display: none;
+        }
+    
+        .button-create button {
+            width: 210px;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+    
+        .close-x {
+            display: none;
+        }
+        
+    }
+
+    @media (max-width: 400px){
+        .addedit-contact-fields {
+            padding-bottom: 20px;
+        }
+        
+        .addedit-contact-design {
+            padding-top: 10px;
+        }
+
+        .addedit-contact-headline h2 {
+            font-size: 40px;
+        }
+
+        .addedit-contact-motivation {
+            font-size: 15px;
+        }
+
+        .addedit-contact-line {
+            margin-bottom: 8%;
+        }
+
+        .addedit-contact-image img {
+            height: 85px;
+        }
+
+
+    }

@@ -1,0 +1,289 @@
+/* MOBILE VERSION */
+
+/* 1180 PX */
+@media (max-width: 1180px) {
+    .heading-search-add {
+        width: 95%;
+    }
+
+    .tasks-container {
+        width: 95%;
+    }
+
+    .contributors-circle {
+        font-size: 14px;
+        padding: 8px 7px;
+    }
+
+    .contributors-circle-big {
+        height: 40px;
+        width: 40px;
+    }
+}
+
+/* 1024 PX */
+@media(max-width: 1024px) {
+    .content-destop {
+        display: none;
+    }
+
+    .task-overly-details::-webkit-scrollbar {
+        display: none;
+    }
+
+    .content-mobile {
+        display: block;
+        width: 100%;
+        padding: 32px;
+        padding-top: 112px;
+        box-sizing: border-box;
+    }
+
+    .heading-search-add {
+        width: 100%;
+    }
+
+    .tasks-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 60px;
+    }
+
+    .task-mobile {
+        width: 100%;
+    }
+
+    .task-card {
+        margin-bottom: 32px;
+    }
+
+    .card-bottom {
+        width: 95%;
+    }
+
+
+    .card-category {
+        width: fit-content;
+        max-width: 100%;
+        min-width: 30%;
+    }
+
+    .heading-search-add {
+        margin-top: 22px;
+    }
+
+    .headingMoveStatusBtns {
+        font-size: 18px;
+        display: unset;
+        margin-bottom: 14px;
+        font-weight: bold;
+        direction: ltr;
+        margin-left: 24px;
+    }
+
+    .moveStatusBtns {
+        display: unset;
+        display: flex;
+        margin-bottom: 32px;
+        direction: ltr;
+        margin-left: 24px;
+    }
+
+    .moveStatusBtns button {
+        font-size: 18px !important;
+        height: 44px;
+    }
+
+    .edit-overlay-btn-statuslast {
+        display: unset;
+        font-size: 20px;
+        width: 120px;
+        height: 44px;
+        background: #2A3647;
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+        color: white;
+    }
+
+    .edit-overlay-btn-statuslast:hover {
+        background: #29ABE2;
+    }
+
+    .edit-overlay-btn-statusnext {
+        display: unset;
+        font-size: 20px;
+        width: 120px;
+        height: 44px;
+        background: #2A3647;
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+        color: white;
+    }
+
+    .edit-overlay-btn-statusnext:hover {
+        background: #29ABE2;
+    }
+}
+
+/* 850 PX */
+@media (max-width: 850px) {
+    .card-container {
+        position: absolute;
+        top: 80px;
+        bottom: 80px;
+        width: 88%;
+        border-radius: unset;
+        background-color: #F6F7F8;
+    }
+
+    .close-overlay-btn {
+        display: none;
+    }
+
+    .back-overlay-btn {
+        display: block;
+    }
+
+    .edit-overlay-btn {
+        position: absolute;
+        bottom: 50px;
+        right: 50px;
+    }
+
+    .edit-overlay-btn-delete {
+        position: absolute;
+        bottom: 114px;
+        right: 50px;
+    }
+
+}
+
+/* 750 PX */
+@media (max-width: 750px) {
+    .heading-search-add {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+    }
+
+    .add-task-btn {
+        display: none;
+    }
+
+
+    .add-task-btn-mobile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 12px;
+        right: 0px;
+    }
+
+    .input-and-button-container {
+        width: auto;
+    }
+
+    .card-bottom {
+        width: 90%;
+    }
+
+    .main-heading {
+        margin-bottom: 22px !important;
+    }
+
+
+}
+
+/* 500 PX */
+@media(max-width: 500px) {
+    .card-title-big {
+        font-size: 32px;
+        word-wrap: break-word;
+    }
+
+    .card-description-big {
+        font-size: 16px;
+        word-wrap: break-word;
+    }
+
+    .due-date-prio {
+        font-size: 18px;
+    }
+
+    .priority-tag {
+        height: 32px;
+    }
+
+    .contributors-circle-big {
+        height: 35px;
+        width: 35px;
+    }
+
+    .edit-overlay-btn {
+        bottom: 22px;
+        right: 44px;
+    }
+
+    .edit-overlay-btn-delete {
+        bottom: 86px;
+        right: 44px;
+    }
+}
+
+/* 375 PX */
+@media(max-width: 375px) {
+    .card-container {
+        top: 0;
+        bottom: 0;
+    }
+
+    .alert-delete-task {
+        height: 220px;
+    }
+
+    .alert-delete-task h2 {
+        font-size: 20px;
+    }
+
+    .alert-delete-task-btn {
+        margin-top: 28px;
+    }
+
+    .alert-delete-task-btn button {
+        font-size: 18px;
+        width: 100px;
+    }
+
+}
+
+/* 350 PX */
+@media (max-width: 350px) {
+    .small-heading-mobile {
+        font-size: 16px;
+    }
+
+    .main-heading {
+        font-size: 45px;
+
+    }
+
+    .add-task-btn-mobile {
+        height: 35px;
+        width: 35px;
+    }
+
+    .board-input-container {
+        width: 212px;
+        height: 42px;
+    }
+
+    .board-inputfield {
+        width: 150px;
+    }
+}

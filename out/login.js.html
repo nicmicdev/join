@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: login.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: login.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * This function checks if the email and password from the inputfields are existing in the database  
+ *      if found --> user proceeds to summary.html
+ *               else --> showing message:"user not found"
+ * 
+ */
+async function login() {
+    let email = document.getElementById('email-login');
+    let password = document.getElementById('password-login');
+    let user = users.find(u => u.email === email.value &amp;&amp; u.password == password.value)
+    if (user) {
+        await localStorage.setItem('activeUser', JSON.stringify(user.name));  // saving active user in local storage 
+        checkViewPortAndRedirect()
+    } else {
+        document.getElementById('user-not-found').classList.remove('d-none');
+        email.value = "";
+        password.value = "";
+    }
+}
+
+
+/**
+ * This function is used to log in as a guest. Mainly for demo purposes
+ * 
+ */
+async function guestLogin() {
+    let guest = { 'name': 'Guest', };
+    await localStorage.setItem('activeUser', JSON.stringify(guest.name));  // saving guest as active user in local storage
+    if (document.body.clientWidth > 1024) {
+        window.location.href = 'summary.html';
+    } else {
+        window.location.href = 'hello_mobile.html';
+    }
+}
+
+
+/**
+ * This function checks if the email already exists in the database before adding a new user.
+ *
+ */
+function checkSignUp() {
+    let email = document.getElementById('email-signup');
+    let user = users.find(u => u.email === email.value);
+    if (!user) {
+        addUser();
+    } else {
+        document.getElementById('userExists').classList.remove('d-none');
+        document.getElementById('goToLoginBtn').classList.remove('d-none');
+        email.value = "";
+        email.focus();
+        return false
+    }
+}
+
+
+/**
+ * This function adds a user to the database
+ * 
+ */
+async function addUser() {
+    let name = document.getElementById('name-signup');
+    let email = document.getElementById('email-signup');
+    let password = document.getElementById('password-signup');
+    users.push({ name: name.value, email: email.value, password: password.value });
+    await backend.setItem('users', JSON.stringify(users));
+    window.location.href = 'success_signup.html';
+    name.value = "";
+    email.value = "";
+    password.value = "";
+}
+
+
+/**
+ * This function is used to check if the user exists in the database before sending a reset password Email
+ * 
+ * @param  {string} e - this event parameter is used to prevent sending the email if the user already exists 
+ */
+function checkIfUserExists(e) {
+    let email = document.getElementById('forgot-pw-mail');
+    let user = users.find(u => u.email === email.value);
+    if (user) {
+        return true
+    } else {
+        e.preventDefault();
+        document.getElementById('forgot-user-not-found').classList.remove('d-none');
+        email.value = "";
+        return false
+    }
+}
+
+
+/**
+ * This function extracts users email out of the url and changes the password for this specific user
+ * 
+ */
+function changePassword() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const email = urlParams.get('email');
+    let newPassword = document.getElementById('new-password');
+    let newPasswordConfirm = document.getElementById('new-password-confirm');
+    let findMailInUsers = users.find(u => u.email == email);
+    if (newPassword.value == newPasswordConfirm.value) {
+        settingNewPassword(newPassword, newPasswordConfirm , findMailInUsers);
+    } else {
+        document.getElementById('user-not-found').classList.remove('d-none');
+        newPassword.value = '';
+        newPasswordConfirm.value = '';
+    }
+}
+
+
+/**
+ * This function is used to overwrite the exsiting password in the database 
+ * 
+ * @param  {string} newPassword - inputfield for the new password
+ * @param  {string} newPasswordConfirm - inputfield to confirm the new password
+ * @param  {string} findMailInUsers - finding the email in the databse
+ */
+async function settingNewPassword(newPassword, newPasswordConfirm, findMailInUsers) {
+    findMailInUsers.password = newPassword.value;
+    await backend.setItem('users', JSON.stringify(users));
+    window.location.href = 'success_reset_pw.html'
+    newPassword.value = '';
+    newPasswordConfirm.value = '';
+}
+
+
+/**
+ * This functions opens up the landing page
+ * 
+ */
+function goToLogin() {
+    window.location.href = 'index.html';
+}
+
+
+/**
+ * This function checks viewport width and redirects to a certain page
+ * 
+ */
+function checkViewPortAndRedirect() {
+    if (document.body.clientWidth > 1024) {
+        window.location.href = 'summary.html';
+    } else {
+        window.location.href = 'hello_mobile.html';
+    }
+}
+
+
+//-****************************PASSWORD SHOW AND HIDE FUNCTIONS*****************************************************************
+
+/**
+ * This functions checks the input type onfocus of the inputfield  
+ * 
+ * @param  {string} id - id of the element you want to target
+ * @param  {string} name - name of the section you want to target (select from: login, signup, reset, confirm)
+ */
+function checkInputType(id, name) {
+    let typeIsPassword = document.getElementById(id).type == 'password';
+    if (typeIsPassword == true) changePwIconToEye(name);
+}
+
+
+/**
+ * This function changes the password icon to a toggle button to show and hide the password
+ * 
+ * @param  {string} name - name of the section you want to target (select from: login, signup, reset, confirm)
+ */
+function changePwIconToEye(name) {
+
+    document.getElementById(`pw-no-show-${name}`).classList.remove('d-none');
+    document.getElementById(`pw-icon-${name}`).classList.add('d-none');
+    document.getElementById(`pw-show-${name}`).classList.add('d-none');
+}
+
+
+/**
+ * This function changes the type of the targeted inpufield from password to text while also changing the toggle button
+ * 
+ * @param  {string} id - id of the element you want to target
+ * @param  {string} name - name of the section you want to target (select from: login, signup, reset, confirm)
+ */
+function changePwToText(id, name) {
+    document.getElementById(`pw-no-show-${name}`).classList.add('d-none');
+    document.getElementById(`pw-show-${name}`).classList.remove('d-none');
+    document.getElementById(id).type = 'text';
+}
+
+
+/**
+ * This function changes the type of the targeted inpufield from text to password while also changing the toggle button
+ * 
+ * @param  {string} id - id of the element you want to target
+ * @param  {string} name - name of the section you want to target (select from: login, signup, reset, confirm)
+ */
+function changeTextToPw(id, name) {
+    document.getElementById(`pw-no-show-${name}`).classList.remove('d-none');
+    document.getElementById(`pw-show-${name}`).classList.add('d-none');
+    document.getElementById(id).type = 'password';
+}
+
+//-*********************SHOW AND HIDE SECTION ON LOGIN SCREEN ******************************************************************
+
+
+/**
+ * This function displays the "forgot password" section on the login screen
+ * 
+ */
+ function openForgotPassword(){
+    document.getElementById('forgot-password').classList.remove('d-none');
+    document.getElementById('login').classList.add('d-none');
+    document.getElementById('signUp-mobile-button').classList.add('d-none');
+    document.getElementById('signUp-button').classList.add('d-none');
+}
+
+
+/**
+ * This function closes the "forgot password" section on the login screen
+ * 
+ */
+function closeForgotPassword(){
+    document.getElementById('forgot-password').classList.add('d-none');
+    document.getElementById('login').classList.remove('d-none');
+    document.getElementById('signUp-mobile-button').classList.remove('d-none');
+    document.getElementById('signUp-button').classList.remove('d-none');
+}
+
+
+/**
+ * This function displays the "sign up" section on the login screen
+ * 
+ */
+function openSignUp(){
+    document.getElementById('login').classList.add('d-none');
+    document.getElementById('sign-up').classList.remove('d-none');
+    document.getElementById('signUp-mobile-button').classList.add('d-none');
+    document.getElementById('signUp-button').classList.add('d-none');
+}
+
+
+/**
+ * This function closes the "sign up" section on the login screen
+ * 
+ */
+function closeSignUp(){
+    document.getElementById('login').classList.remove('d-none');
+    document.getElementById('sign-up').classList.add('d-none');
+    document.getElementById('signUp-mobile-button').classList.remove('d-none');
+    document.getElementById('signUp-button').classList.remove('d-none');
+}
+
+
+/**
+ * This function redirects to the login page
+ * 
+ */
+function openIndex() {
+    window.location.href = "index.html"
+}
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addNewContact">addNewContact</a></li><li><a href="global.html#addUser">addUser</a></li><li><a href="global.html#allowDrop">allowDrop</a></li><li><a href="global.html#assignContactOnClick">assignContactOnClick</a></li><li><a href="global.html#categoriesDropdownTemplate">categoriesDropdownTemplate</a></li><li><a href="global.html#changeColorBG">changeColorBG</a></li><li><a href="global.html#changeContactColor">changeContactColor</a></li><li><a href="global.html#changePassword">changePassword</a></li><li><a href="global.html#changePwIconToEye">changePwIconToEye</a></li><li><a href="global.html#changePwToText">changePwToText</a></li><li><a href="global.html#changeTextToPw">changeTextToPw</a></li><li><a href="global.html#checkAlphabetBox">checkAlphabetBox</a></li><li><a href="global.html#checkAssignedTo">checkAssignedTo</a></li><li><a href="global.html#checkContacts">checkContacts</a></li><li><a href="global.html#checkIfUserExists">checkIfUserExists</a></li><li><a href="global.html#checkInputType">checkInputType</a></li><li><a href="global.html#checkNewCategory">checkNewCategory</a></li><li><a href="global.html#checkNewCategoryMobile">checkNewCategoryMobile</a></li><li><a href="global.html#checkSignUp">checkSignUp</a></li><li><a href="global.html#checkTaskToCreate">checkTaskToCreate</a></li><li><a href="global.html#checkViewPortAndRedirect">checkViewPortAndRedirect</a></li><li><a href="global.html#clearAssignedContacts">clearAssignedContacts</a></li><li><a href="global.html#clearTask">clearTask</a></li><li><a href="global.html#clearTaskMobile">clearTaskMobile</a></li><li><a href="global.html#clickPriorityButton">clickPriorityButton</a></li><li><a href="global.html#closeAlertDelete">closeAlertDelete</a></li><li><a href="global.html#closeCard">closeCard</a></li><li><a href="global.html#closeForgotPassword">closeForgotPassword</a></li><li><a href="global.html#closeSignUp">closeSignUp</a></li><li><a href="global.html#closeSingleContact">closeSingleContact</a></li><li><a href="global.html#contributorContainerBigTemplate">contributorContainerBigTemplate</a></li><li><a href="global.html#contributorsContainerTemplate">contributorsContainerTemplate</a></li><li><a href="global.html#convertDueDate">convertDueDate</a></li><li><a href="global.html#createAlphabetBox">createAlphabetBox</a></li><li><a href="global.html#createNewCategory">createNewCategory</a></li><li><a href="global.html#createNewCategoryMobile">createNewCategoryMobile</a></li><li><a href="global.html#createTask">createTask</a></li><li><a href="global.html#dataForShowInfo">dataForShowInfo</a></li><li><a href="global.html#declareArrays">declareArrays</a></li><li><a href="global.html#defineSelectedPriority">defineSelectedPriority</a></li><li><a href="global.html#deleteTask">deleteTask</a></li><li><a href="global.html#deleteUser">deleteUser</a></li><li><a href="global.html#dismissCategory">dismissCategory</a></li><li><a href="global.html#dismissCategoryMobile">dismissCategoryMobile</a></li><li><a href="global.html#displayNoneContacts">displayNoneContacts</a></li><li><a href="global.html#doNotClose">doNotClose</a></li><li><a href="global.html#editContact">editContact</a></li><li><a href="global.html#findJSONInArray">findJSONInArray</a></li><li><a href="global.html#flyOutContact">flyOutContact</a></li><li><a href="global.html#generateLetterBox">generateLetterBox</a></li><li><a href="global.html#generateSingleContacts">generateSingleContacts</a></li><li><a href="global.html#getAmountTasksDone">getAmountTasksDone</a></li><li><a href="global.html#getAmountTasksFeedback">getAmountTasksFeedback</a></li><li><a href="global.html#getAmountTasksInProgress">getAmountTasksInProgress</a></li><li><a href="global.html#getAmountTasksTodo">getAmountTasksTodo</a></li><li><a href="global.html#getAssignedContacts">getAssignedContacts</a></li><li><a href="global.html#getAssignedContactsMobile">getAssignedContactsMobile</a></li><li><a href="global.html#getCurrentDay">getCurrentDay</a></li><li><a href="global.html#getCurrentMonth">getCurrentMonth</a></li><li><a href="global.html#getDaytimeGreeting">getDaytimeGreeting</a></li><li><a href="global.html#getFirstLetter">getFirstLetter</a></li><li><a href="global.html#getInitials">getInitials</a></li><li><a href="global.html#getRandomColor">getRandomColor</a></li><li><a href="global.html#getTaskById">getTaskById</a></li><li><a href="global.html#getUrgentTasks">getUrgentTasks</a></li><li><a href="global.html#goToLogin">goToLogin</a></li><li><a href="global.html#guestLogin">guestLogin</a></li><li><a href="global.html#hideAddTask">hideAddTask</a></li><li><a href="global.html#hideAddTaskTemplate">hideAddTaskTemplate</a></li><li><a href="global.html#hideDivTaskContactSection">hideDivTaskContactSection</a></li><li><a href="global.html#hideHelp">hideHelp</a></li><li><a href="global.html#hideLogout">hideLogout</a></li><li><a href="global.html#highlight">highlight</a></li><li><a href="global.html#includeHTML">includeHTML</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#initAddTask">initAddTask</a></li><li><a href="global.html#initAddTaskTemplate">initAddTaskTemplate</a></li><li><a href="global.html#initBoard">initBoard</a></li><li><a href="global.html#initDestop">initDestop</a></li><li><a href="global.html#initLegalNotice">initLegalNotice</a></li><li><a href="global.html#initMobile">initMobile</a></li><li><a href="global.html#lastStatus">lastStatus</a></li><li><a href="global.html#loadJSONFromServer">loadJSONFromServer</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#lowBtnclicked">lowBtnclicked</a></li><li><a href="global.html#mediumBtnclicked">mediumBtnclicked</a></li><li><a href="global.html#moveToDone">moveToDone</a></li><li><a href="global.html#moveToFeedback">moveToFeedback</a></li><li><a href="global.html#moveToProgress">moveToProgress</a></li><li><a href="global.html#moveToTodo">moveToTodo</a></li><li><a href="global.html#nextStatus">nextStatus</a></li><li><a href="global.html#onsubmitEdit">onsubmitEdit</a></li><li><a href="global.html#openCard">openCard</a></li><li><a href="global.html#openEditContact">openEditContact</a></li><li><a href="global.html#openForgotPassword">openForgotPassword</a></li><li><a href="global.html#openIndex">openIndex</a></li><li><a href="global.html#openNewContact">openNewContact</a></li><li><a href="global.html#openSignUp">openSignUp</a></li><li><a href="global.html#openSingleContact">openSingleContact</a></li><li><a href="global.html#pushAllContacts">pushAllContacts</a></li><li><a href="global.html#removeHighlight">removeHighlight</a></li><li><a href="global.html#removeTasksSearch">removeTasksSearch</a></li><li><a href="global.html#render">render</a></li><li><a href="global.html#renderAssignedContactsEdit">renderAssignedContactsEdit</a></li><li><a href="global.html#renderButtons">renderButtons</a></li><li><a href="global.html#renderCategories">renderCategories</a></li><li><a href="global.html#renderCategoriesMobile">renderCategoriesMobile</a></li><li><a href="global.html#renderCategoryEdit">renderCategoryEdit</a></li><li><a href="global.html#renderContacts">renderContacts</a></li><li><a href="global.html#renderContactsAddTask">renderContactsAddTask</a></li><li><a href="global.html#renderContactsMobile">renderContactsMobile</a></li><li><a href="global.html#renderContributorsContainer">renderContributorsContainer</a></li><li><a href="global.html#renderContributorsContainerDetails">renderContributorsContainerDetails</a></li><li><a href="global.html#renderContributorsContainerMobile">renderContributorsContainerMobile</a></li><li><a href="global.html#renderEditTask">renderEditTask</a></li><li><a href="global.html#renderFirstRow">renderFirstRow</a></li><li><a href="global.html#renderGreeting">renderGreeting</a></li><li><a href="global.html#renderGreetingHello">renderGreetingHello</a></li><li><a href="global.html#renderPriorityBtnEdit">renderPriorityBtnEdit</a></li><li><a href="global.html#renderPrioritySymbol">renderPrioritySymbol</a></li><li><a href="global.html#renderPrioritySymbolMobile">renderPrioritySymbolMobile</a></li><li><a href="global.html#renderPriorityTagBig">renderPriorityTagBig</a></li><li><a href="global.html#renderSecondRow">renderSecondRow</a></li><li><a href="global.html#renderSuccessMessage">renderSuccessMessage</a></li><li><a href="global.html#renderSummary">renderSummary</a></li><li><a href="global.html#renderTaskDestop">renderTaskDestop</a></li><li><a href="global.html#renderTaskDetails">renderTaskDetails</a></li><li><a href="global.html#renderTaskMobile">renderTaskMobile</a></li><li><a href="global.html#renderTasks">renderTasks</a></li><li><a href="global.html#renderTasksDestop">renderTasksDestop</a></li><li><a href="global.html#renderTasksMobile">renderTasksMobile</a></li><li><a href="global.html#renderThirdRow">renderThirdRow</a></li><li><a href="global.html#renderUsernameTopper">renderUsernameTopper</a></li><li><a href="global.html#renderWithoutActiveSection">renderWithoutActiveSection</a></li><li><a href="global.html#resetArrays">resetArrays</a></li><li><a href="global.html#resetBGColor">resetBGColor</a></li><li><a href="global.html#resetBtnClickedLow">resetBtnClickedLow</a></li><li><a href="global.html#resetBtnClickedMedium">resetBtnClickedMedium</a></li><li><a href="global.html#resetBtnClickedUrgent">resetBtnClickedUrgent</a></li><li><a href="global.html#saveJSONToServer">saveJSONToServer</a></li><li><a href="global.html#saveTask">saveTask</a></li><li><a href="global.html#saveTaskMobile">saveTaskMobile</a></li><li><a href="global.html#searchTask">searchTask</a></li><li><a href="global.html#selectColor">selectColor</a></li><li><a href="global.html#setActiveSection">setActiveSection</a></li><li><a href="global.html#setActiveUser">setActiveUser</a></li><li><a href="global.html#settingNewPassword">settingNewPassword</a></li><li><a href="global.html#showAddCategory">showAddCategory</a></li><li><a href="global.html#showAddCategoryMobile">showAddCategoryMobile</a></li><li><a href="global.html#showAddTask">showAddTask</a></li><li><a href="global.html#showAddTaskContactlist">showAddTaskContactlist</a></li><li><a href="global.html#showAddTaskEdit">showAddTaskEdit</a></li><li><a href="global.html#showAllTasksSearch">showAllTasksSearch</a></li><li><a href="global.html#showContacts">showContacts</a></li><li><a href="global.html#showDeleteTaskAlert">showDeleteTaskAlert</a></li><li><a href="global.html#showEmptyContact">showEmptyContact</a></li><li><a href="global.html#showHelp">showHelp</a></li><li><a href="global.html#showLogout">showLogout</a></li><li><a href="global.html#showNewContact">showNewContact</a></li><li><a href="global.html#showSuccessMessage">showSuccessMessage</a></li><li><a href="global.html#showTaskDetailsTemplate">showTaskDetailsTemplate</a></li><li><a href="global.html#showThisContactInfos">showThisContactInfos</a></li><li><a href="global.html#sortAlphabetList">sortAlphabetList</a></li><li><a href="global.html#sortContacts">sortContacts</a></li><li><a href="global.html#sortContactsAddTask">sortContactsAddTask</a></li><li><a href="global.html#startDragging">startDragging</a></li><li><a href="global.html#statusTaskOnCreate">statusTaskOnCreate</a></li><li><a href="global.html#stopPropagationInput">stopPropagationInput</a></li><li><a href="global.html#taskCardTemplate">taskCardTemplate</a></li><li><a href="global.html#taskCardTemplateMobile">taskCardTemplateMobile</a></li><li><a href="global.html#unsetBtnClicked">unsetBtnClicked</a></li><li><a href="global.html#updateColorContactsinTasks">updateColorContactsinTasks</a></li><li><a href="global.html#updateSearchDestopMobile">updateSearchDestopMobile</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Fri Dec 30 2022 08:15:48 GMT+0100 (Mitteleuropäische Normalzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,0 +1,635 @@
+body {
+    font-family: Inter;
+    color: #2A3647;
+    background-color: #F6F7F8;
+    margin: 0;
+    display: flex;
+
+}
+
+.content-destop {
+    width: 100%;
+    /* min-width: 1024px; */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    font-family: Inter;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.inner-content {
+    background-color: #F6F7F8;
+    position: absolute;
+    left: 232px;
+    top: 89px;
+    height: calc(100vh - 89px);
+    width: calc(100% - 232px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+}
+
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  .inner-content {
+    scrollbar-width: auto;
+    scrollbar-color: #2a3647 #F6F7F8;
+  }
+
+  /* Chrome, Edge, and Safari */
+  .inner-content::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  .inner-content::-webkit-scrollbar-track {
+    background: #F6F7F8;
+  }
+
+  .inner-content::-webkit-scrollbar-thumb {
+    background-color: #2a3647;
+    border-radius: 10px;
+    border: 1px solid #ffffff;
+  }
+
+.alert-delete-task-container {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.alert-delete-task {
+    height: 240px;
+    width: 450px;
+    background-color: white;
+    border-radius: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 48px;
+    box-sizing: border-box;
+}
+
+.close-overlay-btn-delete {
+    height: 32px;
+    width: 32px;
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    cursor: pointer;
+}
+
+.alert-delete-task h2 {
+    text-align: center;
+}
+
+.alert-delete-task-btn {
+    margin-top: 32px;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.alert-delete-task-btn button {
+    font-size: 20px;
+    width: 120px;
+    height: 44px;
+    background: #2A3647;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+
+.alert-delete-delete-btn {
+    background-color: red !important;
+}
+
+.alert-delete-delete-btn:hover {
+    background-color: rgb(255, 105, 105) !important;
+}
+
+.alert-delete-task-btn button:hover {
+    background: #29ABE2;
+}
+
+.main-heading {
+    font-size: 61px;
+    font-weight: 700;
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+
+}
+
+.heading-search-add {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    margin-top: 50px;
+}
+
+.input-and-button-container {
+    display: flex;
+    width: 400px;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.board-input-container {
+    height: 42px;
+    width: 260px;
+    padding: 3px 7px;
+    border: 1px solid #A8A8A8;
+    border-radius: 10px;
+    font-size: 16px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.board-inputfield {
+    font-size: 16px;
+    font-weight: 100;
+    width: 200px;
+    border: none;
+    outline: none;
+}
+
+.search-icon {
+    margin-left: 7px;
+
+}
+
+.vertical-line {
+    color: lightgray;
+    font-weight: 200;
+    font-size: 25px;
+
+}
+
+.add-task-btn {
+    height: 50px;
+    width: 115px;
+    border-radius: 10px;
+    background: #2A3647;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.add-task-btn-mobile {
+    height: 50px;
+    width: 50px;
+    border-radius: 10px;
+    background: #2A3647;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+    display: none;
+
+}
+
+.add-task-btn:hover {
+    background-color: #29ABE2;
+    box-shadow: #2A3647;
+    border: none;
+}
+
+.add-task-btn-mobile:hover {
+    background-color: #29ABE2;
+    box-shadow: #2A3647;
+    border: none;
+}
+
+.tasks-container {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.task {
+    width: 23%;
+    height: 100%;
+    min-height: 72vh;
+    padding: 8px;
+    border-radius: 10px;
+}
+
+.dragarea-highlight {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.tasks-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 21px;
+    cursor: pointer;
+}
+
+.plus-icon {
+    background-image: url('assets/img/plus_black.svg');
+    object-fit: cover;
+    height: 30px;
+    width: 30px;
+}
+
+.plus-icon:hover {
+    background-image: url('assets/img/plus_blue.svg');
+}
+
+
+/* TASK CARDS */
+
+.task-card {
+    /* min-height: 200px; */
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center;
+    align-items: center; */
+    padding: 18px 19px;
+    gap: 10px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 22px;
+}
+
+.card-category {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 25px;
+    gap: 10px;
+    margin-bottom: 10px;
+    width: fit-content;
+    max-width: 100%;
+    min-width: 30%;
+    height: 27px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 300;
+    font-size: 18px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.card-title {
+    font-weight: 700;
+    word-wrap: break-word;
+}
+
+.card-description {
+    color: #A8A8A8;
+    word-wrap: break-word;
+}
+
+.card-bottom {
+    display: flex;
+    /* position: absolute;
+    bottom: 7px; */
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contributors-container {
+    display: flex;
+    overflow-x: auto;
+}
+
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  .icontributors-containertems {
+    scrollbar-width: auto;
+    scrollbar-color: #2a3647 #ffffff;
+  }
+
+  /* Chrome, Edge, and Safari */
+  .contributors-container::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .contributors-container::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
+  .contributors-container::-webkit-scrollbar-thumb {
+    background-color: #2a3647;
+    border-radius: 10px;
+    border: 1px solid #ffffff;
+  }
+
+.contributors-circle {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 9px;
+    color: white;
+    font-weight: 200;
+    font-size: 14px;
+    width: 30px;
+    height: 30px;
+    background: #02CF2F;
+    border-radius: 58px;
+    margin-right: 5px;
+}
+
+
+/* CARD VIEW OVERLAY */
+
+
+.card-category-big {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 25px;
+    margin-bottom: 24px;
+    margin-top: 24px;
+    min-width: 30%;
+    width: fit-content;
+    max-width: 100%;
+    height: 27px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 300;
+    font-size: 18px;
+}
+
+.task-overly-details {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    direction: rtl;
+}
+
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  .task-overly-details {
+    scrollbar-width: auto;
+    scrollbar-color: #2a3647 #ffffff;
+  }
+
+  /* Chrome, Edge, and Safari */
+  .task-overly-details::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  .task-overly-details::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
+  .task-overly-details::-webkit-scrollbar-thumb {
+    background-color: #2a3647;
+    border-radius: 10px;
+    border: 1px solid #ffffff;
+  }
+
+.card-title-big {
+    font-weight: 600;
+    font-size: 50px;
+    margin-bottom: 32px;
+    word-wrap: break-word;
+}
+
+.card-description-big {
+    /* color: #A8A8A8; */
+    font-size: 22px;
+    font-weight: 300;
+    margin-bottom: 32px;
+    word-wrap: break-word;
+}
+
+.close-overlay-btn {
+    height: 32px;
+    width: 32px;
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    cursor: pointer;
+}
+
+.back-overlay-btn {
+    height: 22px;
+    width: 22px;
+    position: absolute;
+    right: 50px;
+    top: 55px;
+    cursor: pointer;
+    display: none;
+}
+
+.edit-overlay-btn {
+    width: 57px;
+    height: 57px;
+    background: #2A3647;
+    border-radius: 10px;
+    border: none;
+    position: absolute;
+    bottom: 32px;
+    right: 32px;
+    cursor: pointer;
+}
+
+.edit-overlay-btn:hover {
+    background: #29ABE2;
+}
+
+.edit-overlay-btn-delete {
+    width: 57px;
+    height: 57px;
+    background: #2A3647;
+    border-radius: 10px;
+    border: none;
+    position: absolute;
+    bottom: 96px;
+    right: 32px;
+    cursor: pointer;
+}
+
+.edit-overlay-btn-delete img {
+    height: 28px;
+    object-fit: contain;
+}
+
+.edit-overlay-btn-delete:hover {
+    background: #29ABE2;
+}
+
+.headingMoveStatusBtns {
+    display: none;
+}
+
+.moveStatusBtns {
+    display: none;
+}
+
+.edit-overlay-btn-statuslast {
+    display: none;
+}
+
+.edit-overlay-btn-statusnext {
+    display: none;
+}
+
+.due-date-prio {
+    font-size: 22px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+}
+
+.contributor-container {
+    display: flex;
+    margin-bottom: 16px;
+}
+
+.contributors-circle-big {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 9px;
+    color: white;
+    font-weight: 200;
+    width: 50px;
+    height: 50px;
+    background: #02CF2F;
+    border-radius: 58px;
+}
+
+/* COLORS FOR CONTRIBUTORS */
+
+.blue {
+    background-color: #0390E0 !important;
+}
+
+.purple {
+    background-color: #EE01D6 !important;
+}
+
+.green {
+    background-color: #04CF2E !important;
+}
+
+.yellow-dark {
+    background-color: #FFA800 !important;
+}
+
+.lila {
+    background-color: #9326FF !important;
+}
+
+.orange {
+    background-color: #FF5C01 !important;
+}
+
+/* COLORS FOR CATEGORY */
+
+.design {
+    background-color: #FF7A00 !important;
+}
+
+.sales {
+    background-color: #FC71FF !important;
+}
+
+.backoffice {
+    background-color: #1FD7C1 !important;
+}
+
+.marketing {
+    background-color: #0038FF !important;
+}
+
+.media {
+    background-color: #FFC704 !important;
+}
+
+
+/* CSS FOR OVERLAY */
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9;
+    display: flex;
+    justify-content: center;
+}
+
+.d-none {
+    display: none;
+}
+
+.card-container {
+    position: relative;
+    position: fixed;
+    top: 8%;
+    bottom: 8%;
+    width: 620px;
+    z-index: 10;
+    border-radius: 20px;
+    object-fit: contain;
+    background-color: white;
+    padding: 24px 50px;
+    padding-left: 26px;
+    /* right: 28%; */
+    /* left: 15%; */
+    display: flex;
+    flex-direction: column;
+
+}
+
+.oflow-y-hid {
+    overflow-y: hidden !important;
+}
+
+.oflow-y-unset {
+    overflow-y: unset !important;
+}
+
+.content-mobile {
+    display: none;
+}
+
+.small-heading-mobile {
+    font-size: 18px;
+}
+
+.directionLTR {
+    direction: ltr;
+    margin-left: 24px;
+}

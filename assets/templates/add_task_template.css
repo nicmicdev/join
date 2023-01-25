@@ -1,0 +1,588 @@
+body {
+    font-family: Inter;
+}
+
+.content-background {
+    z-index: 100;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgb(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-addtask {
+    width: 80%;
+    max-width: 1024px;
+    background-color: #F6F7F8;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 32px;
+    border-radius: 40px;
+    position: relative;
+}
+
+.flyIn {
+    animation: flyIn;
+    animation-duration: 0.8s;
+}
+
+@keyframes flyIn {
+    0% {
+        right: -1500px
+    }
+
+    100% {
+        right: 0px;
+    }
+}
+
+.flyOut {
+    animation: flyOut;
+    animation-duration: 1.2s;
+}
+
+@keyframes flyOut {
+    0% {
+        right: 0
+    }
+
+    100% {
+        right: -2500px;
+    }
+}
+
+.close-btn {
+    position: absolute;
+    right: 32px;
+    top: 36px;
+}
+
+.close-btn:hover {
+    cursor: pointer;
+}
+
+.addtask-h1 {
+    font-size: 52px;
+    margin: 0;
+    margin-bottom: 32px;
+    color: #2A3647;
+    font-weight: bold;
+}
+
+.formContentWithButton {
+    display: flex;
+    box-sizing: unset;
+}
+
+.divContentAddtask {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 380px;
+    padding: 16px 24px;
+}
+
+input {
+    font-family: Inter;
+    font-size: 16px;
+    padding: 4px 8px;
+    border-radius: 8px;
+    border: 1px solid rgb(214, 214, 214);
+    margin-left: 8px;
+    height: 32px;
+}
+
+input:focus {
+    outline: none;
+}
+
+textarea {
+    font-family: Inter;
+    font-size: 16px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid rgb(214, 214, 214);
+    margin-left: 8px;
+    resize: none;
+    height: 92px;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+.urgent{
+    background-color: red !important;
+}
+
+.medium{
+    background-color: orange !important ;
+}
+
+.low{
+    background-color: green !important;
+}
+
+select {
+    font-family: Inter;
+    font-size: 16px;
+    padding: 4px 8px;
+    border-radius: 8px;
+    border: 1px solid rgb(214, 214, 214);
+    margin-left: 8px;
+    height: 42px;
+    background-color: white;
+}
+
+.selected-category-color{
+    width: 24px;
+    height: 24px;
+    background-color: white;
+    border-radius: 100%;
+    position: absolute;
+    top: 64%;
+    left: 80%;
+}
+
+
+select:focus {
+    outline: none;
+}
+
+select:hover {
+    cursor: pointer;
+}
+
+option {
+    color: white;
+}
+
+.divContentAddtask span {
+    box-sizing: unset;
+    margin-top: 24px;
+    margin-bottom: 6px;
+}
+
+.choosePriority {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.choosePriority img {
+    object-fit: contain;
+    width: 16px;
+    margin-left: 8px;
+}
+
+.choosePriority span {
+    margin: 0;
+}
+
+.choosePriority div {
+    width: 100px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.choosePriority div:hover {
+    cursor: pointer;
+    transition: 175ms ease-in-out;
+    transform: scale(1.1);
+    box-shadow: 1px 1px 1px 1px rgb(194, 194, 194);
+}
+
+.choosePriorityPicked {
+    transform: scale(1.1);
+    box-shadow: 1px 1px 1px 1px rgb(194, 194, 194);
+    pointer-events: none;
+    color: white;
+}
+
+.choosePriorityPicked img {
+    filter: brightness(0) invert(1);
+}
+
+.div-button {
+    margin-top: 48px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.div-button button {
+    font-size: 16px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding: 0px 8px;
+}
+
+.div-button img {
+    height: 10px;
+    object-fit: contain;
+    margin-left: 10px;
+}
+
+.clear-btn {
+    border: 1px solid #2A3647;
+    border-radius: 10px;
+    color: #2A3647;
+    background-color: white;
+    width: 88px;
+    display: flex;
+    justify-content: center;
+}
+
+.clear-btn:hover {
+    cursor: pointer;
+    border-color: #29ABE2;
+    color: #29ABE2;
+}
+
+.clear-btn:hover img {
+    filter: invert(55%) sepia(88%) saturate(713%) hue-rotate(165deg) brightness(92%) contrast(92%);
+}
+
+.create-task-btn {
+    margin-left: 32px;
+    background-color: #2A3647;
+    border: 0;
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+}
+
+.create-task-btn:hover {
+    background-color: #29ABE2;
+    cursor: pointer;
+}
+
+.dialog-taskadded {
+    z-index: 999;
+    width: 280px;
+    display: flex;
+    background-color: #2A3647;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+    padding: 16px;
+    position: fixed;
+    top: 78%;
+    left: calc(50% + 116px);
+    transform: translateX(-50%);
+}
+
+.dialog-taskadded img {
+    height: 24px;
+    object-fit: contain;
+    margin-left: 32px;
+}
+
+.d-none {
+    display: none;
+}
+
+.background {
+    display: none;
+}
+
+.new-category {
+    display: flex;
+    flex-direction: column;
+    margin-left: 8px;
+}
+
+.new-category-name {
+    display: flex;
+    background-color: white;
+    border-radius: 8px;
+    border: 1px solid rgb(221, 221, 221);
+}
+
+.new-category-name input {
+    width: 80%;
+    border: 0;
+}
+
+.new-category-name button {
+    width: 10%;
+    background-color: white;
+    border: 0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.new-category-name button:hover {
+    cursor: pointer;
+}
+
+
+.new-category-name img {
+    height: 12px;
+    object-fit: contain;
+}
+
+.select-color-category {
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.select-color-category div {
+    width: 18px;
+    height: 18px;
+    border: 1px solid white;
+    border-radius: 100%;
+}
+
+.select-color-category div:hover {
+    cursor: pointer;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.selected-color {
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+/*chechlist for contacts*/
+.dropdown-check-list-contacts {
+    display: inline-block;
+}
+
+.dropdown-check-list-contacts .anchor {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 5px 50px 5px 10px;
+    border: 1px solid #ccc;
+    margin: 0;
+    width: -webkit-fill-available;
+    margin-left: 8px;
+    font-size: 16px;
+    background-color: white;
+    border-radius: 8px;
+    height: 30px;
+}
+
+.dropdown-check-list-contacts .anchor:after {
+    position: absolute;
+    content: "";
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    padding: 2.63px;
+    right: 6px;
+    top: 40%;
+    -moz-transform: rotate(-135deg);
+    -ms-transform: rotate(-135deg);
+    -o-transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+}
+
+.dropdown-check-list-contacts .anchor:active:after {
+    right: 8px;
+    top: 21%;
+}
+
+.dropdown-check-list-contacts ul.items {
+    padding: 2px;
+    display: none;
+    margin: 0;
+    max-height: 104px;
+    overflow-y: auto;
+    margin-left: 8px;
+    border-radius: 12px;
+}
+
+.dropdown-check-list-contacts ul.items li {
+    list-style: none;
+    color: white;
+    padding: 4px;
+    border-radius: 8px;
+    margin: 4px 0px;
+    display: flex;
+    align-items: center;
+    height: 24px;
+    font-size: 18px;
+}
+
+.dropdown-check-list-contacts ul.items li:hover {
+    cursor: pointer;
+    filter: brightness(0.9);
+}
+
+.dropdown-check-list-contacts.visible .items {
+    display: block;
+}
+
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  .items {
+    scrollbar-width: auto;
+    scrollbar-color: #2a3647 #ffffff;
+  }
+
+  /* Chrome, Edge, and Safari */
+  .items::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .items::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
+  .items::-webkit-scrollbar-thumb {
+    background-color: #2a3647;
+    border-radius: 10px;
+    border: 1px solid #ffffff;
+  }
+
+  .contributors-circle-addtask {
+    box-sizing: border-box !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 9px;
+    color: white;
+    font-weight: 200;
+    font-size: 14px;
+    width: 30px;
+    height: 30px;
+    background: #02CF2F;
+    border-radius: 58px;
+    margin: 0px 5px !important;
+}
+
+.assignedContactsDiv{
+    display: flex;
+    overflow-x: auto;
+    height: 42px;
+    align-items: center;
+    margin-left: 6px;
+}
+
+  @media(max-width: 1100px){
+    .choosePriority div {
+        width: 96px;
+    }
+}
+
+
+@media(max-width:1024px) {
+    .background {
+        height: 100vh;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #F6F7F8;
+    }
+
+    .content-background {
+        box-sizing: unset;
+        z-index: 10;
+        top: 82px;
+    }
+
+    .content-addtask {
+        width: 100%;
+        height: 100%;
+        padding-top: 32px;
+        border-radius: 0;
+        background-color: #F6F7F8;
+        box-sizing: border-box;
+        justify-content: unset;
+        overflow-y: scroll;
+        overflow-x: hidden;
+
+        animation: none;
+    }
+
+    .formContentWithButton {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .clear-btn {
+        display: none !important;
+    }
+
+    .dialog-taskadded {
+        left: 50%;
+    }
+
+    .create-task-btn {
+        z-index: 10;
+        position: fixed;
+        top: 16px;
+        right: 18px;
+        background-color: #2A3647;
+        border: 0;
+        border-radius: 10px;
+        color: white;
+        font-weight: 600;
+        font-size: 16px;
+        height: 48px !important;
+        display: flex;
+        align-items: center;
+        padding: 0px 8px;
+    }
+
+    .divContentAddtask {
+        width: 66%;
+        height: unset;
+        box-sizing: unset;
+    }
+
+    .choosePriority {
+        justify-content: space-between;
+    }
+
+    .choosePriority div {
+        min-width: 88px;
+        width: 20%;
+    }
+
+    .div-button {
+        margin: 0;
+        width: 200px;
+        height: 77px;
+        background-color: #F6F7F8;
+        z-index: 10;
+        position: fixed;
+        top: 2px;
+        right: 2px;
+        border-radius: 8px;
+    }
+}
+
+@media(max-width:700px) {
+    .divContentAddtask {
+        width: 100%;
+    }
+
+    .content-addtask {
+        padding: 28px 2%;
+    }
+
+    .addtask-h1 {
+        font-size: 42px;
+    }
+}

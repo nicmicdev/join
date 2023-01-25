@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="assets/templates/add_task_template.css">
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="shortcut icon" href="assets/img/Join_background.png" type="image/x-icon">
+
+
+    <script src="mini_backend.js"></script>
+    <script src="add_task.js"></script>
+    <script src="add_task_template.js"></script>
+    <script src="new_contact.js"></script>
+    <script src="script.js"></script>
+
+</head>
+
+<body onload="initAddTaskTemplate()">
+    <div class="content-background" id="close-addTask-background" onclick="hideAddTaskTemplate()">
+        <div id="content-addtask" class="content-addtask flyIn" onclick="doNotClose(event)">
+            <h1 id="add-edit-task-headline" class="addtask-h1">Add task</h1>
+            <form id="formAddTask" onsubmit="checkTaskToCreate(); return false">
+                <img src="assets/img/close-button-addtask.svg" class="close-btn" id="close-btn" onclick="hideAddTaskTemplate()">
+                <div class="formContentWithButton">
+                    <div class="divContentAddtask"
+                        style="@media(min-width:1024px){border-right: 1px solid rgb(186, 186, 186); padding-left: 0;}">
+                        <span style="margin-top: 0;">Title</span>
+                        <input required placeholder="Enter a title" id="input-title">
+                        <span>Description</span>
+                        <textarea required placeholder="Enter a description" id="input-description"></textarea>
+                        <div style="position: relative; display: flex; flex-direction: column;">
+                            <span>Category</span>
+                            <div class="selected-category-color" id="selected-category-colorDiv"></div>
+                            <select required id="select-category" onchange="showAddCategory()">
+                            </select>
+                        </div>
+                        <div class="new-category d-none" id="create-category">
+                            <div class="new-category-name">
+                                <input id="new-category" maxlength="10" placeholder="Name"></input>
+                                <button onclick="dismissCategory()" type="button"><img style="height: 18px;"
+                                        src="assets/img/close-button-addtask.svg"></button>
+                                <button onclick="createNewCategory()" type="button"><img src="assets/img/check-addtask.svg"></button>
+                            </div>
+                            <div class="select-color-category">
+                                <div onclick="selectColor(1)" id="color1" style="background-color: #FC71FF;"></div>
+                                <div onclick="selectColor(2)" id="color2" style="background-color: #FF7A00;"></div>
+                                <div onclick="selectColor(3)" id="color3" style="background-color: #1FD7C1;"></div>
+                                <div onclick="selectColor(4)" id="color4" style="background-color: #2AD300;"></div>
+                                <div onclick="selectColor(5)" id="color5" style="background-color: red;"></div>
+                                <div onclick="selectColor(6)" id="color6" style="background-color: #8AA4FF;"></div>
+                                <div onclick="selectColor(7)" id="color7" style="background-color: blue;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divContentAddtask" style="@media(min-width:1024px){padding-right: 0;}">
+                        <span style="margin-top: 0;">Due date</span>
+                        <input required type="date" id="input-date" onclick="getThisActualDate()">
+                        <span>Prio</span>
+                        <div class="choosePriority">
+                            <div id="urgent-btn" onclick="clickPriorityButton('urgent')">
+                                <span>Urgent</span>
+                                <img src="assets/img/addTaskUrgentSymbol.svg">
+                            </div>
+                            <div id="medium-btn" onclick="clickPriorityButton('medium')">
+                                <span>Medium</span>
+                                <img src="assets/img/addTaskMediumSymbol.svg">
+                            </div>
+                            <div id="low-btn" onclick="clickPriorityButton('low')">
+                                <span>Low</span>
+                                <img src="assets/img/addTaskLowSymbol.svg">
+                            </div>
+                        </div>
+                        <span>Assigned to</span>
+                        <div id="assign-to-list" class="dropdown-check-list-contacts" tabindex="100">
+                            <span class="anchor">Select Contacts</span>
+                            <ul class="items" id="contacts-to-assign">
+                            </ul>
+                        </div>
+                        <div id="assignedContactsDiv" class="assignedContactsDiv"></div>
+                    </div>
+                </div>
+                <div class="div-button">
+                    <button class="clear-btn" type="button" onclick="clearTask()">Clear<img
+                            src="assets/img/clearTaskImg.svg"></button>
+                    <button id="add-edit-button" type="submit" class="create-task-btn">Add Task<img
+                            src="assets/img/createTaskImg.svg"></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
