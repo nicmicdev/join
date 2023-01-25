@@ -159,7 +159,8 @@ select:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0px 2px;
+    padding: 0px 3px;
+    font-size: 14px;
 }
 
 
